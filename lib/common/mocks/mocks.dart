@@ -1,6 +1,6 @@
 import 'package:shop_on_block/feature/data/models/food_model.dart';
 
-abstract class Mocks{
+abstract class Mocks {
    static final List<FoodModel> _listFoodModel = [
     FoodModel(
       id: 1,

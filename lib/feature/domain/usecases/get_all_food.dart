@@ -11,7 +11,8 @@ class GetAllFood extends UseCase<List<FoodEntity>, PageFoodParams> {
   final FoodRepository foodRepository;
   GetAllFood(this.foodRepository);
   
-   Future<Either<Failure, List<FoodEntity>>> call(PageFoodParams params) async {
+   @override
+     Future<Either<Failure, List<FoodEntity>>> call(PageFoodParams params) async {
     return await foodRepository.getAllFood(params.id);
    }
   }
@@ -20,7 +21,7 @@ class GetAllFood extends UseCase<List<FoodEntity>, PageFoodParams> {
   class PageFoodParams extends Equatable {
     final int id;
 
-  PageFoodParams({required this.id}); 
+  const PageFoodParams({required this.id}); 
     @override
   List<Object?> get props => [id];
   }

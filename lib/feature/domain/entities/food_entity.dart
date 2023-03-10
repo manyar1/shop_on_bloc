@@ -9,7 +9,7 @@ class FoodEntity extends Equatable {
   final String imgUrl;
   final String imgUrl2;
 
-  FoodEntity({
+  const FoodEntity({
     required this.id,
     required this.title,
     required this.description,

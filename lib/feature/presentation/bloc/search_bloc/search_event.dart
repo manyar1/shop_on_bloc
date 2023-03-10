@@ -7,9 +7,9 @@ abstract class SearchFoodEvent extends Equatable{
   List<Object?> get props => [];
 }
 
-class SearchFood extends SearchFoodEvent {
+class FoodSearch extends SearchFoodEvent {
   final String foodQuery;
 
-  const SearchFood(this.foodQuery);
+  const FoodSearch(this.foodQuery);
 
 }

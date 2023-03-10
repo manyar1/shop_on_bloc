@@ -17,12 +17,12 @@ class FoodSearchLoading extends SearchFoodState{
 }
 //персонажи загрузились
 class FoodSearchLoaded extends SearchFoodState{
-  final List<FoodEntity> food;
+  final List<FoodEntity> foods;
 
-  const FoodSearchLoaded(this.food);
+  const FoodSearchLoaded({required this.foods});
 
   @override
-  List<Object?> get props => [food];
+  List<Object?> get props => [foods];
 }
 //при загрузке произошла ошибка
 class PersonSearchError extends SearchFoodState {
