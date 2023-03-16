@@ -25,10 +25,10 @@ class FoodSearchLoaded extends SearchFoodState{
   List<Object?> get props => [foods];
 }
 //при загрузке произошла ошибка
-class PersonSearchError extends SearchFoodState {
+class FoodSearchError extends SearchFoodState {
   final String message;
 
-  const PersonSearchError({required this.message});
+  const FoodSearchError({required this.message});
   @override
  
   List<Object?> get props => [message];
