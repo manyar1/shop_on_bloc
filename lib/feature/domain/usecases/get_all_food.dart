@@ -7,21 +7,22 @@ import 'package:shop_on_block/feature/domain/repositories/food_repository.dart';
 
 
 
-class GetAllFood extends UseCase<List<FoodEntity>, PageFoodParams> {
+class GetAllFoodUseCase extends UseCase<List<FoodEntity>, PageFoodParams> {
   final FoodRepository foodRepository;
-  GetAllFood(this.foodRepository);
+  GetAllFoodUseCase(this.foodRepository);
   
    @override
      Future<Either<Failure, List<FoodEntity>>> call(PageFoodParams params) async {
-    return await foodRepository.getAllFood(params.id);
+    return await foodRepository.getAllFood();
    }
   }
 
 
   class PageFoodParams extends Equatable {
-    final int id;
+  const PageFoodParams();
+  @override
 
-  const PageFoodParams({required this.id}); 
-    @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [];
+   
+  
   }

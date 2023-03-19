@@ -11,8 +11,8 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBlock extends Bloc<CartEvent, CartState>{
-  final GetFoodToCart cartFood;
-  CartBlock({required this.cartFood}) : super (CartEmpty()){
+  final GetFoodToCartUseCase cartFood;
+  CartBlock(this.cartFood) : super (CartEmpty()){
     _setupEvents();
   }
   void _setupEvents()

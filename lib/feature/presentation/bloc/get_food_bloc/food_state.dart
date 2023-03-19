@@ -32,12 +32,12 @@ final List<FoodEntity> foodsList;
  
 
  class FoodError extends GetFoodState{
-  final String message;
+  final Failure failure;
 
-  FoodError({required this.message});
+  FoodError({required this.failure});
   @override
   
-  List<Object?> get props => [message];
+  List<Object?> get props => [failure];
   
 
  }

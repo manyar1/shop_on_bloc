@@ -8,8 +8,8 @@ part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchFoodBloc extends Bloc<SearchFoodEvent, SearchFoodState> {
-  final SearchFood searchFood;
-  SearchFoodBloc({required this.searchFood}) : super(FoodEmpty()) {
+  final SearchFoodUseCase searchFood;
+  SearchFoodBloc(this.searchFood) : super(FoodEmpty()) {
     _setupEvents();
   }
   void _setupEvents() {

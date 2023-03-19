@@ -1,8 +1,9 @@
-import 'package:shop_on_block/feature/data/models/food_model.dart';
+
+import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 
 abstract class Mocks {
-   static final List<FoodModel> _listFoodModel = [
-    FoodModel(
+   static final List<FoodEntity> listFoodEntity = [
+    const FoodEntity(
       id: 1,
       description:
           'Начинка: капуста белокочанная Лаваш тонкий 3 шт.ук репчатый, морковь по - корейский, огурцы маринованные, перец сладкий, шашлык и говядины 200 г ',
@@ -12,7 +13,7 @@ abstract class Mocks {
       imgUrl: 'common/assets/images/kebab.png',
       imgUrl2: 'common/assets/images/Frame_3.png',
     ),
-    FoodModel(
+    const FoodEntity(
       id: 2,
       description:
           'ИНГРЕДИЕНТЫ: курица, помидор, огурец, лаваш, петрушка, укроп, йогурт, листовой салат, паприка, чеснок, сыр-фета, хмели, сунели, соль',
@@ -22,7 +23,7 @@ abstract class Mocks {
       imgUrl: 'common/assets/images/donner.png',
       imgUrl2:'common/assets/images/Group_5.png',
     ),
-     FoodModel(
+     const FoodEntity(
       id: 3,
       description:
           'ИНГРЕДИЕНТЫ: лаваш армянский, помидор свежий 1 шт, салат айсберг 1/2 шт, куриная грудка 350 г, сыр Гауда 150 г, майонез, горчица 1 ч. л, чеснок 2 шт, соль по вкусу, специи по вкусу',
@@ -32,7 +33,7 @@ gram: 250,
       imgUrl: 'common/ssets/images/сze.png',
       imgUrl2: 'common/assets/images/Group_4.png',
     ),
-     FoodModel(
+     const FoodEntity(
       id: 4,
       description:
           'ИНГРЕДИЕНТЫ: курица, помидор, огурец, лаваш, петрушка, укроп, йогурт, листовой салат, паприка, чеснок, сыр-фета, хмели, сунели, соль',
@@ -42,7 +43,7 @@ gram: 250,
       imgUrl: 'common/assets/images/shaurma.png',
       imgUrl2:'common/assets/images/Group_6.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 5,
       description:
           'Тортилья, курица, лук, перец болгарский, чеснок, баклажаны, пекинская капуста, кабачки, сыр моцарелла, соус сирача, соус шашлычный, специи',
@@ -52,7 +53,7 @@ gram: 250,
       imgUrl: 'common/assets/images/burito2.png',
       imgUrl2:'common/assets/images/burito.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 6,
       description:
           'Пита, болгарский перец, салат айсберг, огурец свежий, куриное филе, соевый соус, оливковое масло, соль, перец черный молотый, паприка молотая, йогурт, лимонный сок, чеснок, соль и перец, карри порошок.',
@@ -62,7 +63,7 @@ gram: 250,
       imgUrl: 'common/assets/images/pita2.png',
       imgUrl2:'common/assets/images/pita.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 7,
       description: '',
       title: 'Фанта',
@@ -71,7 +72,7 @@ gram: 250,
       imgUrl: 'common/ssets/images/phanta.png',
       imgUrl2:'common/assets/images/phanta.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 8,
       description: '',
       title: 'Спрайт',
@@ -80,7 +81,7 @@ gram: 250,
       imgUrl: 'common/assets/images/sprite.png',
       imgUrl2:'common/assets/images/sprite.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 9,
       description: '',
       title: 'Кока-кола',
@@ -89,7 +90,7 @@ gram: 250,
       imgUrl: 'common/assets/images/cola.png',
       imgUrl2:'common/assets/images/cola.png'
     ),
-     FoodModel(
+     const FoodEntity(
       id: 10,
       description: '',
       title: 'Сок-яблочный',
@@ -98,7 +99,7 @@ gram: 250,
       imgUrl: 'common/assets/images/apple.png',
       imgUrl2:'common/assets/images/apple.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 11,
       description: '',
       title: 'Red Bull',
@@ -107,7 +108,7 @@ gram: 250,
       imgUrl: 'common/assets/images/redbull.png',
       imgUrl2:'common/assets/images/redbull.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 12,
       description: '',
       title: 'Святой источник негаз',
@@ -116,7 +117,7 @@ gram: 250,
       imgUrl: 'common/assets/images/nogaz.png',
       imgUrl2:'common/assets/images/nogaz.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 13,
       description: '',
       title: 'Святой источник газ',
@@ -125,7 +126,7 @@ gram: 250,
       imgUrl: 'common/assets/images/gaz.png',
       imgUrl2:'common/assets/images/gaz.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 14,
       description: 'Большая порция. Запеченный картофель + Кетчуп в подарок',
       title: 'Картошка-фри',
@@ -134,7 +135,7 @@ gram: 250,
       imgUrl: 'common/assets/images/kartoshkafri.png',
       imgUrl2:'common/assets/images/kartoshkafri.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 15,
       description: 'Большая порция. Запеченный картофель по-деревенски + Кетчуп в подарок',
       title: 'Картошка по-деревенски',
@@ -143,7 +144,7 @@ gram: 250,
       imgUrl: 'common/assets/images/kartoshkaderev.png',
       imgUrl2:'common/assets/images/kartoshkaderev.png'
     ),
-     FoodModel(
+     const FoodEntity(
       id: 16,
       description: 'Куриные нагетсы с хрустящей корочкой 9 штук + Кетчуп в подарок',
       title: 'Нагетсы куриные',
@@ -152,7 +153,7 @@ gram: 250,
       imgUrl: 'common/assets/images/nagi.png',
       imgUrl2:'common/assets/images/nagi.png'
     ),
-     FoodModel(
+     const FoodEntity(
       id: 7,
       description: 'Большая порция. Куринные крылышки на сковородке 6 штук + Кетчуп в подарок',
       title: 'Куриные крылашки',
@@ -161,7 +162,7 @@ gram: 250,
       imgUrl: 'common/assets/images/krilo.png',
       imgUrl2:'common/assets/images/krilo.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 18,
       description: 'Куриные стрипсы с хрустящей корочкой 9 штук + Кетчуп в подарок',
       title: 'Куриные стрипсы',
@@ -170,7 +171,7 @@ gram: 250,
       imgUrl: 'common/assets/images/strips.png',
       imgUrl2:'common/assets/images/strips.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 19,
       description: 'Свининый шашлык на мангале, очень нежное мясо с фирменным вкусом + Кетчуп в подарок',
       title: 'Свининый шашлык',
@@ -179,7 +180,7 @@ gram: 250,
       imgUrl: 'common/assets/images/svininashashlik.png',
       imgUrl2:'common/assets/images/svininashashlik.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 20,
       description: 'Куриные шашлык на мангале, очень нежное мясо с фирменным вкусом + Кетчуп в подарок',
       title: 'Куриный шашлык',
@@ -188,7 +189,7 @@ gram: 250,
       imgUrl: 'common/assets/images/kurinshashlik.png',
       imgUrl2:'common/assets/images/kurinshashlik.png'
     ),
-     FoodModel(
+     const FoodEntity(
       id: 21,
       description: 'Люлякебаб из баранины на мангале, очень нежное мясо с фирменным вкусом + Кетчуп в подарок',
       title: 'Люлякебаб из баранины',
@@ -197,7 +198,7 @@ gram: 250,
       imgUrl: 'common/assets/images/kebablula.png',
       imgUrl2:'common/assets/images/kebablula.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 22,
       description: 'Хлебобулочное изделие, мягкое внутри, с хрустящей корочкой, часто припудренное мукой.',
       title: 'Багет Французкий',
@@ -206,7 +207,7 @@ gram: 250,
       imgUrl: 'common/assets/images/baget.png',
       imgUrl2:'common/assets/images/baget.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 23,
       description: 'Крендель из дрожжевого теста',
       title: 'Брецель',
@@ -215,7 +216,7 @@ gram: 250,
       imgUrl: 'common/assets/images/brechel.png',
       imgUrl2:'common/assets/images/brechel.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 24,
       description: 'Плюшка с сахарной корочкой, мягкая внутри',
       title: 'Плюшка московская',
@@ -224,7 +225,7 @@ gram: 250,
       imgUrl: 'common/assets/images/bylochka.png',
       imgUrl2:'common/assets/images/bylochka.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 25,
       description: 'Татарский пирожок треугольной формы с мясной начинкой',
       title: 'Эчпочмак',
@@ -233,7 +234,7 @@ gram: 250,
       imgUrl: 'common/assets/images/echpochmak.png',
       imgUrl2:'common/assets/images/echpochmak.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 26,
       description: 'Рулет из теста с вишневой начинкой',
       title: 'Вишневый штрудель',
@@ -242,7 +243,7 @@ gram: 250,
       imgUrl: 'common/assets/images/vishnya.png',
       imgUrl2:'common/assets/images/vishnya.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 27,
       description: 'Грибы на гриле',
       title: 'Шашлык из грибов',
@@ -251,7 +252,7 @@ gram: 250,
       imgUrl: 'common/assets/images/gribi.png',
       imgUrl2:'common/assets/images/gribi.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 28,
       description: 'Картофель на гриле',
       title: 'Картофель люля',
@@ -260,7 +261,7 @@ gram: 250,
       imgUrl: 'common/assets/images/lula.png',
       imgUrl2:'common/assets/images/lula.png'
     ),
-    FoodModel(
+    const FoodEntity(
       id: 29,
       description: 'Перец на гриле',
       title: 'Шашлык перец',

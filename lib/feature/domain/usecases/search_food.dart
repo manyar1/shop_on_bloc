@@ -5,9 +5,9 @@ import 'package:shop_on_block/core/error/usecases/usecase.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/feature/domain/repositories/food_repository.dart';
 
-class SearchFood extends UseCase<List<FoodEntity>, SearchFoodParams>{
+class SearchFoodUseCase extends UseCase<List<FoodEntity>, SearchFoodParams>{
   final FoodRepository foodRepository;
-  SearchFood(this.foodRepository);
+  SearchFoodUseCase(this.foodRepository);
   
    @override
     Future<Either<Failure, List<FoodEntity>>> call(SearchFoodParams params) async {

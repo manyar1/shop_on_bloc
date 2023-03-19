@@ -1,12 +1,12 @@
 part of 'food_bloc.dart';
 
-abstract class GetFoodEvent extends Equatable{
-  const GetFoodEvent();
+abstract class FoodEvent extends Equatable{
+  const FoodEvent();
   @override
   List<Object?> get props => [];
 }
 
-class FoodEvent extends GetFoodEvent {
-  const FoodEvent();
+class GetFoodEvent extends FoodEvent {
+  const GetFoodEvent();
 }
 
