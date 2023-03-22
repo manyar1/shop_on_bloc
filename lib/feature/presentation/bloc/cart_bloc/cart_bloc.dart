@@ -4,7 +4,7 @@ import "package:bloc_concurrency/bloc_concurrency.dart";
 import "package:equatable/equatable.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:shop_on_block/feature/domain/entities/food_entity.dart";
-import "package:shop_on_block/feature/domain/usecases/get_all_food.dart";
+
 import "package:shop_on_block/feature/domain/usecases/get_food_to_cart.dart";
 
 part 'cart_event.dart';
@@ -43,7 +43,6 @@ class CartBlock extends Bloc<CartEvent, CartState>{
  }
 void _onPrice(CartEventPrice event, Emitter emit){
   final prevState = state; 
-  int price = 0;
   int counter = 0;
   if (prevState is CounterState){
     counter = prevState.counter;

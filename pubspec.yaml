@@ -60,12 +60,50 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   uses-material-design: true
-  # assets:
-    # - lib\common\assets\image
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - lib\common\assets/images/Frame_3.png
+    - lib\common\assets/images/Group_4.png
+    - lib\common\assets/images/Group_5.png
+    - lib\common\assets/images/Group_6.png
+    - lib\common\assets/images/kebab.png
+    - lib\common\assets/images/shaurma.png
+    - lib\common\assets/images/donner.png
+    - lib\common\assets/images/сze.png
+    - lib\common\assets/images/pita.png
+    - lib\common\assets/images/burito.png
+    - lib\common\assets/images/bread.png
+    - lib\common\assets/images/pita2.png
+    - lib\common\assets/images/burito2.png
+    - lib\common\assets/images/Gruppa_garnirov.png
+    - lib\common\assets/images/Gruppa_napitkov.png
+    - lib\common\assets/images/gruppa_Shashlyka.png
+    - lib\common\assets/images/gruppa_vypechki.png
+    - lib\common\assets/images/phanta.png
+    - lib\common\assets/images/sprite.png
+    - lib\common\assets/images/cola.png
+    - lib\common\assets/images/apple.png
+    - lib\common\assets/images/redbull.png
+    - lib\common\assets/images/nogaz.png
+    - lib\common\assets/images/gaz.png
+    - lib\common\assets/images/gruppa_ovoschey.png
+    - lib\common\assets/images/kartoshkaderev.png
+    - lib\common\assets/images/kartoshkafri.png
+    - lib\common\assets/images/krilo.png
+    - lib\common\assets/images/nagi.png
+    - lib\common\assets/images/strips.png
+    - lib\common\assets/images/svininashashlik.png
+    - lib\common\assets/images/kurinshashlik.png
+    - lib\common\assets/images/kebablula.png
+    - lib\common\assets/images/baget.png
+    - lib\common\assets/images/bylochka.png
+    - lib\common\assets/images/brechel.png
+    - lib\common\assets/images/echpochmak.png
+    - lib\common\assets/images/vishnya.png
+    - lib\common\assets/images/perec.png
+    - lib\common\assets/images/lula.png
+    - lib\common\assets/images/gribi.png
+    - lib\common\assets/images/korzina.png
+    - lib\common\assets/images/ikonka.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
