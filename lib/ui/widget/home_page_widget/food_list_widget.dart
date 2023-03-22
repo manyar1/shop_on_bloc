@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_on_block/feature/presentation/bloc/get_food_bloc/food_bloc.dart';
+import 'package:shop_on_block/ui/pages/food_main_screen/food_main_screen.dart';
 import 'package:shop_on_block/ui/widget/home_page_widget/menu.dart';
 
 class FoodList extends StatelessWidget {
@@ -31,7 +33,9 @@ class FoodList extends StatelessWidget {
                         return SizedBox(
                           width: 150,
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                                 Navigator.of(context).push(CupertinoPageRoute(builder: ((context) => FoodMainScreen (foodsList: foods, indexFood: index,))));
+                            },
                             child:
                                 Image(image: AssetImage(foods[index].imgUrl2)),
                           ),

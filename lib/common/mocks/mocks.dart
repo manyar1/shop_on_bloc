@@ -29,9 +29,9 @@ abstract class Mocks {
           'ИНГРЕДИЕНТЫ: лаваш армянский, помидор свежий 1 шт, салат айсберг 1/2 шт, куриная грудка 350 г, сыр Гауда 150 г, майонез, горчица 1 ч. л, чеснок 2 шт, соль по вкусу, специи по вкусу',
       title: 'Шаверма-цезарь',
       price: 210,
-gram: 250,
-      imgUrl: 'lib/common/ssets/images/сze.png',
-      imgUrl2: 'lib/common/assets/images/Group_4.png',
+      gram: 250,
+      imgUrl: 'lib/common/assets/images/shaurma.png',
+      imgUrl2: 'lib/common/assets/images/Group_6.png',
     ),
      const FoodEntity(
       id: 4,
@@ -40,8 +40,8 @@ gram: 250,
       title: 'Классическая шаурма',
       price: 150,
      gram: 250,
-      imgUrl: 'lib/common/assets/images/shaurma.png',
-      imgUrl2:'lib/common/assets/images/Group_6.png'
+      imgUrl: 'lib/common/assets/images/сze.png',
+      imgUrl2:'lib/common/assets/images/Group_4.png'
     ),
     const FoodEntity(
       id: 5,
