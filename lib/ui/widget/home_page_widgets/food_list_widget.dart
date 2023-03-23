@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_on_block/feature/presentation/bloc/get_food_bloc/food_bloc.dart';
 import 'package:shop_on_block/ui/pages/food_main_screen/food_main_screen.dart';
-import 'package:shop_on_block/ui/widget/home_page_widget/menu.dart';
+import 'package:shop_on_block/ui/widget/home_page_widgets/menu.dart';
 
 class FoodList extends StatelessWidget {
   const FoodList({super.key});
@@ -44,7 +44,6 @@ class FoodList extends StatelessWidget {
                         return Container();
                       }
 
-                      // return Text("${foods[index]}");
                     },
                   ),
                 ),

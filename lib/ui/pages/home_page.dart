@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_on_block/ui/widget/home_page_widget/food_list_widget.dart';
+import 'package:shop_on_block/ui/widget/home_page_widgets/food_list_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

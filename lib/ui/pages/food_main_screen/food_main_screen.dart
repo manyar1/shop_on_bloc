@@ -1,26 +1,77 @@
-
 import 'package:flutter/material.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
-
 
 class FoodMainScreen extends StatelessWidget {
   final int indexFood;
   final List<FoodEntity> foodsList;
-  const FoodMainScreen({super.key, required this.indexFood, required this.foodsList, required });
-  
+  const FoodMainScreen(
+      {super.key, required this.indexFood, required this.foodsList, required});
 
   @override
   Widget build(BuildContext context) {
+    var i = 1;
     return Scaffold(
-       appBar: AppBar(
+        appBar: AppBar(
           title: Text(
             foodsList[indexFood].title,
             style: const TextStyle(fontSize: 20),
           ),
-          backgroundColor: const Color.fromARGB(255, 41, 39, 39),
+          centerTitle: true,
         ),
-        backgroundColor: const Color.fromRGBO(41, 39, 39, 1),
-        body: Container()
-    );
+        body: ListView(
+          children: <Widget>[
+            Hero(
+              tag: foodsList[indexFood].imgUrl,
+              child: Container(
+                height: 300,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(foodsList[indexFood].imgUrl),
+                      fit: BoxFit.contain),
+                ),
+              ),
+            ),
+            Card(
+              elevation: 5.0,
+              margin: const EdgeInsets.only(right: 20, left: 20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  (10),
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                     Text(
+          foodsList[indexFood].title,
+          style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold ),
+        ),
+        const Divider(),
+        Text(foodsList[indexFood].description,style: const TextStyle(fontWeight: FontWeight.bold),),
+        const SizedBox(
+          height: 20,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              '${foodsList[indexFood].gram} г',
+              style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold,),
+            ),
+            Text(
+              '${foodsList[indexFood].price * i} руб',
+              style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+       
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
