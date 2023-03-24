@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_on_block/ui/widget/home_page_widgets/custom_search_delegate.dart';
 import 'package:shop_on_block/ui/widget/home_page_widgets/food_list_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         actions:  [
           IconButton(onPressed:() {
-
+            showSearch(context: context, delegate: CustomSearchDelegate(),);
           }, 
           color: Colors.white,
           icon: const Icon(Icons.search))

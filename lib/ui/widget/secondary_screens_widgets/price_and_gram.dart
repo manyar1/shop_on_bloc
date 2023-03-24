@@ -5,12 +5,12 @@ import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 class PriceAndGram extends StatelessWidget {
   final int indexFood;
   final List<FoodEntity> foodsList;
+  final int i;
   
-  const PriceAndGram({super.key, required this.indexFood, required this.foodsList});
+  const PriceAndGram({super.key, required this.indexFood, required this.foodsList, required this.i});
 
   @override
   Widget build(BuildContext context) {
-    int i  = 1;
     return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

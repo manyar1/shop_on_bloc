@@ -13,6 +13,7 @@ class SearchFoodUseCase extends UseCase<List<FoodEntity>, SearchFoodParams>{
     Future<Either<Failure, List<FoodEntity>>> call(SearchFoodParams params) async {
     return await foodRepository.searchFood(params.title);
    }
+  
   }
 
 
@@ -21,5 +22,6 @@ class SearchFoodUseCase extends UseCase<List<FoodEntity>, SearchFoodParams>{
 
   const SearchFoodParams({required this.title}); 
     @override
-  List<Object?> get props => [title];
+  List<Object> get props => [title];
+
   }

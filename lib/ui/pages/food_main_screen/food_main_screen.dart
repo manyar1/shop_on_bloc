@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
+import 'package:shop_on_block/ui/widget/secondary_screens_widgets/price_and_gram.dart';
 
 class FoodMainScreen extends StatelessWidget {
   final int indexFood;
@@ -44,29 +45,25 @@ class FoodMainScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: <Widget>[
-                     Text(
-          foodsList[indexFood].title,
-          style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold ),
-        ),
-        const Divider(),
-        Text(foodsList[indexFood].description,style: const TextStyle(fontWeight: FontWeight.bold),),
-        const SizedBox(
-          height: 20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              '${foodsList[indexFood].gram} г',
-              style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold,),
-            ),
-            Text(
-              '${foodsList[indexFood].price * i} руб',
-              style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-       
+                    Text(
+                      foodsList[indexFood].title,
+                      style: const TextStyle(
+                          fontSize: 12.0, fontWeight: FontWeight.bold),
+                    ),
+                    const Divider(),
+                    Text(
+                      foodsList[indexFood].description,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    PriceAndGram(
+                      indexFood: indexFood,
+                      foodsList: foodsList,
+                      i: i,
+                    ),
+                    
                   ],
                 ),
               ),

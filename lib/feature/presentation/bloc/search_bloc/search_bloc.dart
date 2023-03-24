@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "package:bloc_concurrency/bloc_concurrency.dart";
 import "package:equatable/equatable.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -13,17 +15,26 @@ class SearchFoodBloc extends Bloc<SearchFoodEvent, SearchFoodState> {
     _setupEvents();
   }
   void _setupEvents() {
-    on<SearchFoodEvent>(_onSearchFood, transformer: droppable());
+    on<FoodSearch>(_onSearchFood, transformer: droppable());
   }
 
   void _onSearchFood(SearchFoodEvent event, Emitter emit) async {
     if (event is FoodSearch) {
-      emit(FoodSearchLoading());
       final failureOrFood =
-          await searchFood(SearchFoodParams(title: event.foodQuery));
+          await searchFood(SearchFoodParams(title: event.foodTitle));
+          log('FoodTitle: ${event.foodTitle}');
+          log('FailureOrFood: $failureOrFood');
       failureOrFood.fold(
-          (failure) => emit(const FoodSearchError(message: 'Ошибка данных')),
-          (food) => emit(FoodSearchLoaded(foods: food)));
+          (failure) => _onStateFailure(emit, failure as String),
+          (food) => _onGetFoodSuccessful(emit, food));
     }
+  }
+  void _onStateFailure(Emitter emit, String failure) async{
+    emit(FoodSearchError(message: failure));
+  }
+  void _onGetFoodSuccessful( Emitter emit, List<FoodEntity> food) async{
+
+    emit(FoodSearchLoaded(foods: food));
+
   }
 }

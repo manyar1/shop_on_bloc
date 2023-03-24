@@ -8,8 +8,7 @@ abstract class SearchFoodEvent extends Equatable{
 }
 
 class FoodSearch extends SearchFoodEvent {
-  final String foodQuery;
-
-  const FoodSearch(this.foodQuery);
+  final String foodTitle;
+  const FoodSearch(this.foodTitle);
 
 }
