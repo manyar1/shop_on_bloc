@@ -4,8 +4,8 @@ class FoodEntity extends Equatable {
   final int id;
   final String title;
   final String description;
-  final num price;
-  final num gram;
+  final double price;
+  final double gram;
   final String imgUrl;
   final String imgUrl2;
 

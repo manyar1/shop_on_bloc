@@ -34,7 +34,11 @@ class FoodList extends StatelessWidget {
                           width: 150,
                           child: GestureDetector(
                             onTap: () {
-                                 Navigator.of(context).push(CupertinoPageRoute(builder: ((context) => FoodMainScreen (foodsList: foods, indexFood: index,))));
+                              Navigator.of(context).push(CupertinoPageRoute(
+                                  builder: (context) => FoodMainScreen(
+                                        foodsList: foods,
+                                        indexFood: index,
+                                      )));
                             },
                             child:
                                 Image(image: AssetImage(foods[index].imgUrl2)),
@@ -43,7 +47,6 @@ class FoodList extends StatelessWidget {
                       } else {
                         return Container();
                       }
-
                     },
                   ),
                 ),
@@ -63,7 +66,7 @@ class FoodList extends StatelessWidget {
 
 Widget _loadingindicator() {
   return const Padding(
-    padding: EdgeInsets.all(8.0),
+    padding: EdgeInsets.all(8),
     child: Center(
       child: CircularProgressIndicator(),
     ),

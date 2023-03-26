@@ -5,7 +5,7 @@ import 'package:shop_on_block/ui/pages/secondary_screens/grilled_vegetables.dart
 import 'package:shop_on_block/ui/pages/secondary_screens/shashlik.dart';
 import 'package:shop_on_block/ui/pages/secondary_screens/side_dishes.dart';
 
-class Menu extends StatelessWidget{
+class Menu extends StatelessWidget {
   const Menu({super.key});
 
   @override
@@ -16,56 +16,50 @@ class Menu extends StatelessWidget{
           GestureDetector(
             onTap: () {
               Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: ((context) =>
-                                  const SideDishes()),
-                            ),
-                          );
+                MaterialPageRoute(
+                  builder: (context) => const SideDishes(),
+                ),
+              );
             },
             child: Image.asset('lib/common/assets/images/Gruppa_garnirov.png'),
           ),
           GestureDetector(
             onTap: () {
-               Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: ((context) =>
-                                  const Shashlik()),
-                            ),
-                          );
-                        },
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const Shashlik(),
+                ),
+              );
+            },
             child: Image.asset('lib/common/assets/images/gruppa_Shashlyka.png'),
           ),
           GestureDetector(
             onTap: () {
               Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: ((context) =>
-                                  const Bakery()),
-                            ),
-                          );
+                MaterialPageRoute(
+                  builder: (context) => const Bakery(),
+                ),
+              );
             },
             child: Image.asset('lib/common/assets/images/gruppa_vypechki.png'),
           ),
           GestureDetector(
             onTap: () {
-             Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: ((context) =>
-                                  const Beverages()),
-                            ),
-                          );
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const Beverages(),
+                ),
+              );
             },
-            
             child: Image.asset('lib/common/assets/images/Gruppa_napitkov.png'),
           ),
-            GestureDetector(
+          GestureDetector(
             onTap: () {
               Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: ((context) =>
-                                  const GrilledVegetables()),
-                            ),
-                          );
+                MaterialPageRoute(
+                  builder: (context) => const GrilledVegetables(),
+                ),
+              );
             },
             child: Image.asset('lib/common/assets/images/gruppa_ovoschey.png'),
           ),
@@ -73,5 +67,4 @@ class Menu extends StatelessWidget{
       ),
     );
   }
-
 }

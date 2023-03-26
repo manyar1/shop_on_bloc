@@ -17,12 +17,16 @@ class HomePage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        actions:  [
-          IconButton(onPressed:() {
-            showSearch(context: context, delegate: CustomSearchDelegate(),);
-          }, 
-          color: Colors.white,
-          icon: const Icon(Icons.search))
+        actions: [
+          IconButton(
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: CustomSearchDelegate(),
+                );
+              },
+              color: Colors.white,
+              icon: const Icon(Icons.search))
         ],
       ),
       body: const FoodList(),

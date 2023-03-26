@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_on_block/ui/widget/secondary_screens_widgets/secondary_screens_list.dart';
 
 final List<int> _mockListIdElementProducts = [
   27,
@@ -12,20 +13,18 @@ class GrilledVegetables extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Овощи на гриле',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
+        appBar: AppBar(
+          title: const Text(
+            'Овощи на гриле',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
           ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Container(),
-      ),
-    );
+        body: SecondaryScreensList(
+          mockListIdElementProducts: _mockListIdElementProducts,
+        ));
   }
 }

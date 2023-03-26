@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shop_on_block/ui/widget/secondary_screens_widgets/secondary_screens_list.dart';
 
 final List<int> _mockListIdElementProducts = [
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  13,
+  14,
+  15,
+  16,
+  17,
+  18,
 ];
 
 class SideDishes extends StatelessWidget {
@@ -16,20 +15,18 @@ class SideDishes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Гарниры',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
+        appBar: AppBar(
+          title: const Text(
+            'Гарниры',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
           ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Container(),
-      ),
-    );
+        body: SecondaryScreensList(
+          mockListIdElementProducts: _mockListIdElementProducts,
+        ));
   }
 }

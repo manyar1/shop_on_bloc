@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_on_block/ui/widget/secondary_screens_widgets/secondary_screens_list.dart';
 
 final List<int> _mockListIdElementProducts = [
   22,
@@ -24,10 +25,7 @@ class Bakery extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Container(),
-      ),
+      body:SecondaryScreensList(mockListIdElementProducts: _mockListIdElementProducts,)
     );
   }
 }

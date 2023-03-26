@@ -5,23 +5,20 @@ import 'package:shop_on_block/core/error/usecases/usecase.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/feature/domain/repositories/food_repository.dart';
 
-
-
 class GetFoodToCartUseCase extends UseCase<List<FoodEntity>, PageCartParams> {
   final FoodRepository foodRepository;
   GetFoodToCartUseCase(this.foodRepository);
-  
-   @override
-     Future<Either<Failure, List<FoodEntity>>> call(PageCartParams params) async {
-    return await foodRepository.getFoodToCart(params.id);
-   }
+
+  @override
+  Future<Either<Failure, List<FoodEntity>>> call(PageCartParams params) async {
+    return  foodRepository.getFoodToCart(params.id);
   }
+}
 
+class PageCartParams extends Equatable {
+  final String id;
 
-  class PageCartParams extends Equatable {
-    final String id;
-
-  const PageCartParams({required this.id}); 
-    @override
+  const PageCartParams({required this.id});
+  @override
   List<Object?> get props => [id];
-  }
+}

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_on_block/common/colors/app_colors.dart';
@@ -7,8 +6,7 @@ import 'package:shop_on_block/feature/presentation/bloc/get_food_bloc/food_bloc.
 import 'package:shop_on_block/feature/presentation/bloc/search_bloc/search_bloc.dart';
 import 'package:shop_on_block/locator_service.dart' as di;
 import 'package:shop_on_block/locator_service.dart';
-
-import 'ui/widget/bottom_navigation.dart';
+import 'package:shop_on_block/ui/widget/bottom_navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,8 +37,13 @@ class _ShopState extends State<Shop> {
         ),
       ],
       child: MaterialApp(
-          theme: ThemeData(fontFamily: 'Lato', scaffoldBackgroundColor: AppColors.mainBackground, colorScheme: const ColorScheme.dark()),
-          home: const BottomNavigation(),),);
+        theme: ThemeData(
+            fontFamily: 'Lato',
+            scaffoldBackgroundColor: AppColors.mainBackground,
+            colorScheme: const ColorScheme.dark()),
+        home: const BottomNavigation(),
+      ),
+    );
   }
 }
 // AnimatedSplashScreen(

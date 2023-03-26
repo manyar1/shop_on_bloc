@@ -1,6 +1,5 @@
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 
-
 class FoodModel extends FoodEntity {
   // ignore: prefer_const_constructors_in_immutables
   FoodModel(

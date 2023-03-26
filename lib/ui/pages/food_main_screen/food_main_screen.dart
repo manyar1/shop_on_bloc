@@ -6,11 +6,11 @@ class FoodMainScreen extends StatelessWidget {
   final int indexFood;
   final List<FoodEntity> foodsList;
   const FoodMainScreen(
-      {super.key, required this.indexFood, required this.foodsList, required});
+      {super.key, required this.indexFood, required this.foodsList});
 
   @override
   Widget build(BuildContext context) {
-    var i = 1;
+    const i = 1;
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -34,21 +34,21 @@ class FoodMainScreen extends StatelessWidget {
               ),
             ),
             Card(
-              elevation: 5.0,
+              elevation: 5,
               margin: const EdgeInsets.only(right: 20, left: 20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
-                  (10),
+                  10,
                 ),
               ),
               child: Container(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   children: <Widget>[
                     Text(
                       foodsList[indexFood].title,
                       style: const TextStyle(
-                          fontSize: 12.0, fontWeight: FontWeight.bold),
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                     const Divider(),
                     Text(
@@ -63,7 +63,6 @@ class FoodMainScreen extends StatelessWidget {
                       foodsList: foodsList,
                       i: i,
                     ),
-                    
                   ],
                 ),
               ),
