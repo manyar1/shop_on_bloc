@@ -13,7 +13,7 @@ class CartState extends Equatable {
     }
     return price;
   }
-
+  
   @override
   List<Object?> get props => [foods];
 }

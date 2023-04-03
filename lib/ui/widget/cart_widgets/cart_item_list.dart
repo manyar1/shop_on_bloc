@@ -26,7 +26,7 @@ final double price;
                 ),
               ),
               direction: DismissDirection.endToStart,
-              onDismissed: (direction) => _deleteFromCart,
+              onDismissed: (direction) => _deleteFromCart(context),
               child: CartItem(foodsList: foodsList, indexFood: indexFood, price: price,)
               
             );

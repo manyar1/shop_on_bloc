@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/feature/presentation/bloc/cart_bloc/cart_bloc.dart';
 import 'package:shop_on_block/ui/widget/cart_widgets/cart_item_list.dart';
 import 'package:shop_on_block/ui/widget/cart_widgets/cart_price.dart';
@@ -23,7 +24,7 @@ class Cart extends StatelessWidget {
       body: BlocBuilder<CartBlock, CartState>(
         builder: (context, state) {
           final food = state.foods;
-          
+      
           return food.isEmpty
               ? Center(
                   child: Image.asset('lib/common/assets/images/korzina.png'),
@@ -34,7 +35,7 @@ class Cart extends StatelessWidget {
                   const Divider(),
                   Expanded(
                     child: ListView.separated(
-                        itemCount: food.length,
+                        itemCount: _length(food),
                         separatorBuilder: (_, __) => const Divider(),
                         itemBuilder: (context, index) {
                           return CartItemList(foodsList: food, indexFood: index, price: state.price,);
@@ -46,5 +47,9 @@ class Cart extends StatelessWidget {
         },
       ),
     );
+  }
+  int _length(List<FoodEntity> foods){
+    final setFoods = foods.toSet();
+    return setFoods.length;
   }
 }

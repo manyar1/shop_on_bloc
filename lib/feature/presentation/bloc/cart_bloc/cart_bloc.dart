@@ -15,6 +15,8 @@ class CartBlock extends Bloc<CartEvent, CartState> {
   void _setupEvents() {
     on<AddOnCartEvent>(_addOnCart, transformer: droppable());
     on<DeleteFromCartEvent>(_deleteFromCart, transformer: droppable());
+    on<DeleteOneItemFromCartEvent>(_deleteOneItemFromCart,
+        transformer: droppable());
   }
 
   void _addOnCart(AddOnCartEvent event, Emitter emit) {
@@ -26,5 +28,12 @@ class CartBlock extends Bloc<CartEvent, CartState> {
     final addFoods = state.foods.toList()
       ..removeWhere((food) => food.id == event.food.id);
     emit(CartState(foods: addFoods));
+  }
+
+  void _deleteOneItemFromCart(DeleteOneItemFromCartEvent event, Emitter emit) {
+    final addFoods = state.foods.toList();
+    final removeIndex = addFoods.indexWhere((food) => food.id == event.food.id);
+    final updatedAddFoods = addFoods.toList()..removeAt(removeIndex);
+    emit(CartState(foods: updatedAddFoods));
   }
 }

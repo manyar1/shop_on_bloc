@@ -38,7 +38,7 @@ class FoodList extends StatelessWidget {
                                   builder: (context) => FoodMainScreen(
                                         foodsList: foods,
                                         indexFood: index,
-                                      )));
+                                      ),),);
                             },
                             child:
                                 Image(image: AssetImage(foods[index].imgUrl2)),

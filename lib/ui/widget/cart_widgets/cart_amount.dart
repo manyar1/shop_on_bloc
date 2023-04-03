@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/feature/presentation/bloc/cart_bloc/cart_bloc.dart';
-import 'package:shop_on_block/ui/widget/cart_widgets/cart_price.dart';
 
 class CartAmount extends StatefulWidget {
   final List<FoodEntity> foodsList;
@@ -16,27 +15,24 @@ class CartAmount extends StatefulWidget {
 
   @override
   // ignore: no_logic_in_create_state
-  State<CartAmount> createState() => _CartAmountState(foodsList: foodsList, price: price, indexFood: indexFood);
+  State<CartAmount> createState() => _CartAmountState(
+      foodsList: foodsList, price: price, indexFood: indexFood);
 }
 
 class _CartAmountState extends State<CartAmount> {
   final List<FoodEntity> foodsList;
   final int indexFood;
   final double price;
-  
+
   int number = 1;
 
-  _CartAmountState({required this.foodsList, required this.indexFood, required this.price});
-  
-  void _deleteFromCart(BuildContext context) {
-    context
-        .read<CartBlock>()
-        .add(DeleteFromCartEvent(food: widget.foodsList[widget.indexFood]));
-  }
+  _CartAmountState(
+      {required this.foodsList, required this.indexFood, required this.price});
+
+
 
   @override
   Widget build(BuildContext context) {
-    double allPrice = price;
     return Card(
       color: const Color.fromRGBO(41, 39, 39, 1),
       shape: const RoundedRectangleBorder(
@@ -50,51 +46,51 @@ class _CartAmountState extends State<CartAmount> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  number--;
-                  allPrice = allPrice + foodsList[indexFood].price + number;
-                });
-                if (number == 0) {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text('Предупреждение'),
-                      content: SingleChildScrollView(
-                        child: ListBody(
-                          children: const <Widget>[
-                            Text('Вы точно хотите удалить?'),
-                          ],
-                        ),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                number--;
+              });
+              _deleteOneItemFromCart(context);
+              if (number == 0) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Предупреждение'),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: const <Widget>[
+                          Text('Вы точно хотите удалить?'),
+                        ],
                       ),
-                      actions: <Widget>[
-                        TextButton(
-                          child: const Text('Да'),
-                          onPressed: () {
-                            number = 0;
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                        TextButton(
-                          child: const Text('Нет'),
-                          onPressed: () {
-                            setState(() {
-                              number++;
-                            });
-                          },
-                        ),
-                      ],
                     ),
-                  );
-                  if (number == 0) {
-                    _deleteFromCart;
-                  }
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('Да'),
+                        onPressed: () {
+                          number = 0;
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('Нет'),
+                        onPressed: () {
+                          setState(() {
+                            number++;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                );
+                if (number == 0) {
+                  _deleteFromCart(context);
                 }
-              },
-              icon: const Icon(Icons.remove_circle_outline),
-              color: Colors.white,
-            ),
+              }
+            },
+            icon: const Icon(Icons.remove_circle_outline),
+            color: Colors.white,
+          ),
           Container(
               height: 50,
               width: 50,
@@ -112,8 +108,7 @@ class _CartAmountState extends State<CartAmount> {
               setState(() {
                 number++;
               });
-              allPrice = allPrice + foodsList[indexFood].price + number;
-            
+              _addOnCart(context);
             },
             icon: const Icon(Icons.add_circle_outline),
             color: Colors.white,
@@ -122,4 +117,20 @@ class _CartAmountState extends State<CartAmount> {
       ),
     );
   }
+    void _deleteFromCart(BuildContext context) {
+    context
+        .read<CartBlock>()
+        .add(DeleteFromCartEvent(food: widget.foodsList[widget.indexFood]));
+  }
+  void _deleteOneItemFromCart(BuildContext context) {
+    context
+        .read<CartBlock>()
+        .add(DeleteOneItemFromCartEvent(food: widget.foodsList[widget.indexFood]));
+  }
+   void _addOnCart(BuildContext context) {
+    context
+        .read<CartBlock>()
+        .add(AddOnCartEvent(food: widget.foodsList[widget.indexFood]));
+  }
+
 }
