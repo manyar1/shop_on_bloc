@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_on_block/feature/presentation/bloc/cart_bloc/cart_bloc.dart';
+import 'package:shop_on_block/ui/widget/cart_widgets/cart_item_list.dart';
+import 'package:shop_on_block/ui/widget/cart_widgets/cart_price.dart';
+
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
@@ -20,13 +23,26 @@ class Cart extends StatelessWidget {
       body: BlocBuilder<CartBlock, CartState>(
         builder: (context, state) {
           final food = state.foods;
-          return ListView.separated(
-            itemCount: food.length,
-            separatorBuilder: (_, __) => const Divider(),
-            itemBuilder: (context, index) {
-              return Text(food[index].title);
-            },
-          );
+          
+          return food.isEmpty
+              ? Center(
+                  child: Image.asset('lib/common/assets/images/korzina.png'),
+                )
+              : Column(
+                children: <Widget>[
+                  CartPrice(price: state.price),
+                  const Divider(),
+                  Expanded(
+                    child: ListView.separated(
+                        itemCount: food.length,
+                        separatorBuilder: (_, __) => const Divider(),
+                        itemBuilder: (context, index) {
+                          return CartItemList(foodsList: food, indexFood: index, price: state.price,);
+                        },
+                      ),
+                  ),
+                ],
+              );
         },
       ),
     );

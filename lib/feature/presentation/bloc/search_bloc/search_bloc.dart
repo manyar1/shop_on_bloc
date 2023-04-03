@@ -44,21 +44,6 @@ class SearchFoodBloc extends Bloc<SearchFoodEvent, SearchFoodState> {
     }).toList();
     emit(prevState.copyWith(foundFoods: foundFoods, search: event.foodTitle));
 
-    // final failureOrFood =
-    //     await searchFood(SearchFoodParams(title: event.foodTitle));
     log('FoodTitle: ${event.foodTitle}');
-    // log('FailureOrFood: $failureOrFood');
-
-    // failureOrFood.fold(
-    //     (failure) => _onStateFailure(emit, failure as String),
-    //     (food) => _onGetFoodSuccessful(emit, food));
   }
-  // void _onStateFailure(Emitter emit, String failure) async{
-  //   emit(FoodSearchError(message: failure));
-  // }
-  // void _onGetFoodSuccessful( Emitter emit, List<FoodEntity> food) async{
-
-  //   emit(FoodSearchLoaded(foods: food));
-
-  // }
 }
