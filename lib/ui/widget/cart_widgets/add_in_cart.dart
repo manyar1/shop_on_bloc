@@ -15,10 +15,14 @@ class AddInCart extends StatelessWidget {
   void _addOnCart(BuildContext context) {
     context.read<CartBlock>().add(AddOnCartEvent(food: foodsList[indexFood]));
   }
+  bool _isThereInTheCart(BuildContext context) {
+    return true; 
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
+    return _isThereInTheCart(context)
+    ?  MaterialButton(
       minWidth: 15,
       color: const Color(0xFFCCFF90),
       child: const Text(
@@ -26,6 +30,15 @@ class AddInCart extends StatelessWidget {
         style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
       ),
       onPressed: () => _addOnCart(context),
-    );
+    )
+    :Column(
+                children: const <Widget>[
+                 
+                  Text(
+                    'Товар уже в корзине',
+                    style: TextStyle(fontSize: 12, color: Colors.black),
+                  )
+                ],
+              );
   }
 }

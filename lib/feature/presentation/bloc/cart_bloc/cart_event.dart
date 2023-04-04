@@ -19,3 +19,7 @@ class DeleteOneItemFromCartEvent extends CartEvent {
   final FoodEntity food;
   const DeleteOneItemFromCartEvent({required this.food});
 }
+class IsThereInTheCartEvent extends CartEvent {
+  final FoodEntity food;
+  const IsThereInTheCartEvent({required this.food});
+}

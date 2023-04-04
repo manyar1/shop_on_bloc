@@ -51,7 +51,9 @@ class _CartAmountState extends State<CartAmount> {
               setState(() {
                 number--;
               });
+              if(number != 0){
               _deleteOneItemFromCart(context);
+              }
               if (number == 0) {
                 showDialog(
                   context: context,
@@ -68,8 +70,8 @@ class _CartAmountState extends State<CartAmount> {
                       TextButton(
                         child: const Text('Да'),
                         onPressed: () {
-                          number = 0;
-                          Navigator.of(context).pop();
+                          _deleteFromCart(context);
+                          Navigator.pop(context);
                         },
                       ),
                       TextButton(
@@ -78,14 +80,14 @@ class _CartAmountState extends State<CartAmount> {
                           setState(() {
                             number++;
                           });
+                          _addOnCart(context);
+                          Navigator.pop(context);
                         },
                       ),
                     ],
                   ),
                 );
-                if (number == 0) {
-                  _deleteFromCart(context);
-                }
+
               }
             },
             icon: const Icon(Icons.remove_circle_outline),
