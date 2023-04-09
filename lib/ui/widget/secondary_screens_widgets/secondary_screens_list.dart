@@ -24,8 +24,7 @@ class SecondaryScreensList extends StatelessWidget {
                   for (int i = 0; i < mockListIdElementProducts.length; i++) {
                     if (foods[index].id == mockListIdElementProducts[i]) {
                       return SecondaryScreensCard(
-                        indexFood: index,
-                        foodsList: foods,
+                        foodsList: foods[index],
                       );
                     }
                   }

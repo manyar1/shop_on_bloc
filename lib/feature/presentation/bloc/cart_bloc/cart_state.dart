@@ -1,10 +1,16 @@
 part of 'cart_bloc.dart';
 
+abstract class CartState extends Equatable {
+  const CartState();
+  @override
+  List<Object> get props => [];
+}
+
 //в корзину перенеслось загрузились
-class CartState extends Equatable {
+class CartLoaded extends CartState {
   final List<FoodEntity> foods;
 
-  const CartState({this.foods = const []});
+  const CartLoaded({required this.foods});
 
   double get price {
     var price = 0.0;
@@ -13,7 +19,21 @@ class CartState extends Equatable {
     }
     return price;
   }
-  
+
   @override
-  List<Object?> get props => [foods];
+  List<Object> get props => [foods];
+}
+
+class CartLoading extends CartState {
+  const CartLoading();
+  @override
+  List<Object> get props => [];
+}
+
+class CartFailure extends CartState {
+  final Failure failure;
+
+  const CartFailure({required this.failure});
+  @override
+  List<Object> get props => [failure];
 }

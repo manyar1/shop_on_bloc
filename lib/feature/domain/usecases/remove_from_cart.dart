@@ -3,20 +3,19 @@ import 'package:equatable/equatable.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/feature/domain/repositories/food_repository.dart';
 
-class GetFoodToCartUseCase  {
+class RemoveFoodToCartUseCase  {
   final FoodRepository foodRepository;
-  GetFoodToCartUseCase(this.foodRepository);
-
-  Future<void> call(PageCartParams params) async {
-    return  foodRepository.addFoodToCart(params.foods);
+  RemoveFoodToCartUseCase(this.foodRepository);
+  
+  Future<void> call(RemoveCartParams params) async {
+    return  foodRepository.removeFromCart(params.foods);
   }
 }
 
-class PageCartParams extends Equatable {
+class RemoveCartParams extends Equatable {
 
   final List<FoodEntity> foods;
-  
-  const PageCartParams({required this.foods});
+  const RemoveCartParams({required this.foods});
   @override
   List<Object?> get props => [foods];
 }

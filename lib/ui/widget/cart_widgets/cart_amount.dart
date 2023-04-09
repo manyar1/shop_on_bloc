@@ -4,30 +4,27 @@ import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/feature/presentation/bloc/cart_bloc/cart_bloc.dart';
 
 class CartAmount extends StatefulWidget {
-  final List<FoodEntity> foodsList;
-  final int indexFood;
+  final  FoodEntity foodsList;
   final double price;
   const CartAmount(
       {super.key,
       required this.foodsList,
-      required this.indexFood,
       required this.price});
 
   @override
   // ignore: no_logic_in_create_state
   State<CartAmount> createState() => _CartAmountState(
-      foodsList: foodsList, price: price, indexFood: indexFood);
+      foodsList: foodsList, price: price,  );
 }
 
 class _CartAmountState extends State<CartAmount> {
-  final List<FoodEntity> foodsList;
-  final int indexFood;
+  final FoodEntity foodsList;
   final double price;
 
   int number = 1;
 
   _CartAmountState(
-      {required this.foodsList, required this.indexFood, required this.price});
+      {required this.foodsList, required this.price});
 
 
 
@@ -122,17 +119,17 @@ class _CartAmountState extends State<CartAmount> {
     void _deleteFromCart(BuildContext context) {
     context
         .read<CartBlock>()
-        .add(DeleteFromCartEvent(food: widget.foodsList[widget.indexFood]));
+        .add(DeleteFromCartEvent(food: foodsList));
   }
   void _deleteOneItemFromCart(BuildContext context) {
     context
         .read<CartBlock>()
-        .add(DeleteOneItemFromCartEvent(food: widget.foodsList[widget.indexFood]));
+        .add(DeleteOneItemFromCartEvent(food: foodsList));
   }
    void _addOnCart(BuildContext context) {
     context
         .read<CartBlock>()
-        .add(AddOnCartEvent(food: widget.foodsList[widget.indexFood]));
+        .add(AddOnCartEvent(food: foodsList));
   }
 
 }

@@ -1,3 +1,4 @@
+
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 
 abstract class Mocks {
@@ -12,7 +13,7 @@ abstract class Mocks {
       imgUrl: 'lib/common/assets/images/kebab.png',
       imgUrl2: 'lib/common/assets/images/Frame_3.png',
     ),
-    const FoodEntity(
+     const FoodEntity(
       id: 2,
       description:
           'ИНГРЕДИЕНТЫ: курица, помидор, огурец, лаваш, петрушка, укроп, йогурт, листовой салат, паприка, чеснок, сыр-фета, хмели, сунели, соль',
@@ -65,7 +66,7 @@ abstract class Mocks {
         title: 'Фанта',
         price: 100,
         gram: 0.5,
-        imgUrl: 'lib/common/ssets/images/phanta.png',
+        imgUrl: 'lib/common/assets/images/phanta.png',
         imgUrl2: 'lib/common/assets/images/phanta.png'),
     const FoodEntity(
         id: 8,

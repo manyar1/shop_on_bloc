@@ -4,10 +4,9 @@ import 'package:shop_on_block/ui/widget/cart_widgets/add_in_cart.dart';
 import 'package:shop_on_block/ui/widget/secondary_screens_widgets/price_and_gram.dart';
 
 class SecondaryScreensCard extends StatelessWidget {
-  final int indexFood;
-  final List<FoodEntity> foodsList;
+  final FoodEntity foodsList;
   const SecondaryScreensCard(
-      {super.key, required this.foodsList, required this.indexFood});
+      {super.key, required this.foodsList, });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class SecondaryScreensCard extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(foodsList[indexFood].imgUrl),
+                    image: AssetImage(foodsList.imgUrl),
                     fit: BoxFit.contain),
               ),
             ),
@@ -46,19 +45,18 @@ class SecondaryScreensCard extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    foodsList[indexFood].title,
+                    foodsList.title,
                     style: const TextStyle(
                         fontSize: 12, fontWeight: FontWeight.bold),
                   ),
                   const Divider(),
                   PriceAndGram(
-                    indexFood: indexFood,
                     foodsList: foodsList,
                     i: i,
                   ),
                   const Divider(),
                   AddInCart(
-                      number: i, indexFood: indexFood, foodsList: foodsList)
+                      number: i, food: foodsList)
                 ],
               ),
             ),

@@ -4,10 +4,9 @@ import 'package:shop_on_block/ui/pages/food_main_screen/food_main_screen.dart';
 import 'package:shop_on_block/ui/widget/cart_widgets/cart_amount.dart';
 
 class CartItem extends StatelessWidget {
-  final List<FoodEntity> foodsList;
-  final int indexFood;
+  final FoodEntity foodsList;
 final double price;
-  const CartItem({super.key, required this.foodsList, required this.indexFood, required this.price});
+  const CartItem({super.key, required this.foodsList, required this.price});
   
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,7 @@ final double price;
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => FoodMainScreen(
-                        indexFood: indexFood, foodsList: foodsList),
+                         foodsList: foodsList),
                   ),
                 );
               },
@@ -42,14 +41,14 @@ final double price;
                   image: DecorationImage(
                     scale: 5,
                     image: AssetImage(
-                      foodsList[indexFood].imgUrl,
+                      foodsList.imgUrl,
                     ),
                   ),
                 ),
               ),
             ),
             title: Text(
-              foodsList[indexFood].title,
+              foodsList.title,
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 22,
@@ -59,13 +58,13 @@ final double price;
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  '${foodsList[indexFood].price} р',
+                  '${foodsList.price} р',
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 22,
                   ),
                 ),
-                CartAmount(foodsList: foodsList, indexFood: indexFood, price: price),
+                CartAmount(foodsList: foodsList, price: price),
               ],
             ),
           ),

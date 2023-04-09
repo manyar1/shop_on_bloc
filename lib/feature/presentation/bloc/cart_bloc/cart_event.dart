@@ -15,11 +15,15 @@ class DeleteFromCartEvent extends CartEvent {
   final FoodEntity food;
   const DeleteFromCartEvent({required this.food});
 }
+
 class DeleteOneItemFromCartEvent extends CartEvent {
   final FoodEntity food;
   const DeleteOneItemFromCartEvent({required this.food});
 }
-class IsThereInTheCartEvent extends CartEvent {
-  final FoodEntity food;
-  const IsThereInTheCartEvent({required this.food});
+
+class GetAllFoodCartEvent extends CartEvent {
+  final Completer? completer;
+  const GetAllFoodCartEvent({this.completer});
+  @override
+  List<Object?> get props => [completer];
 }

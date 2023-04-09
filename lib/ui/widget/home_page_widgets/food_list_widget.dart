@@ -36,8 +36,7 @@ class FoodList extends StatelessWidget {
                             onTap: () {
                               Navigator.of(context).push(CupertinoPageRoute(
                                   builder: (context) => FoodMainScreen(
-                                        foodsList: foods,
-                                        indexFood: index,
+                                        foodsList: foods[index],
                                       ),),);
                             },
                             child:

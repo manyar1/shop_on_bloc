@@ -3,10 +3,9 @@ import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/ui/widget/secondary_screens_widgets/price_and_gram.dart';
 
 class FoodMainScreen extends StatelessWidget {
-  final int indexFood;
-  final List<FoodEntity> foodsList;
+  final FoodEntity foodsList;
   const FoodMainScreen(
-      {super.key, required this.indexFood, required this.foodsList});
+      {super.key, required this.foodsList});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,7 @@ class FoodMainScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            foodsList[indexFood].title,
+            foodsList.title,
             style: const TextStyle(fontSize: 20),
           ),
           centerTitle: true,
@@ -22,13 +21,13 @@ class FoodMainScreen extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             Hero(
-              tag: foodsList[indexFood].imgUrl,
+              tag: foodsList.imgUrl,
               child: Container(
                 height: 300,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(foodsList[indexFood].imgUrl),
+                      image: AssetImage(foodsList.imgUrl),
                       fit: BoxFit.contain),
                 ),
               ),
@@ -46,20 +45,19 @@ class FoodMainScreen extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      foodsList[indexFood].title,
+                      foodsList.title,
                       style: const TextStyle(
                           fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                     const Divider(),
                     Text(
-                      foodsList[indexFood].description,
+                      foodsList.description,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     PriceAndGram(
-                      indexFood: indexFood,
                       foodsList: foodsList,
                       i: i,
                     ),

@@ -18,4 +18,5 @@ class FoodModel extends FoodEntity {
             gram: gram,
             imgUrl: imgUrl,
             imgUrl2: imgUrl2);
+
 }

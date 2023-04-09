@@ -4,6 +4,8 @@ import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 
 abstract class FoodRepository {
   Future<Either<Failure, List<FoodEntity>>> getAllFood();
-  Future<Either<Failure, List<FoodEntity>>> getFoodToCart(String id);
+  Future<void> addFoodToCart(List<FoodEntity> foods);
+  Future<void> removeFromCart(List<FoodEntity> foods);
   Future<Either<Failure, List<FoodEntity>>> searchFood(String title);
+  Future<Either<Failure, List<FoodEntity>>> getAllFoodCart();
 }
