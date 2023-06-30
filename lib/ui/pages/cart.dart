@@ -12,6 +12,7 @@ class Cart extends StatelessWidget {
   void _getAllFoodCart(BuildContext context) {
     context.read<CartBlock>().add(const GetAllFoodCartEvent());
   }
+
   @override
   Widget build(BuildContext context) {
     _getAllFoodCart(context);
@@ -26,36 +27,41 @@ class Cart extends StatelessWidget {
         ),
       ),
       body: BlocBuilder<CartBlock, CartState>(
+        buildWhen: (previous, current) {
+          
+          return true;
+        },
         builder: (context, state) {
-          log(state.toString());
-          if(state is CartLoaded)
-          {final food = state.foods;
-          return food.isNotEmpty
-             ? Column(
-                  children: <Widget>[
-                    CartPrice(price: state.price),
-                    const Divider(),
-                    Expanded(
-                      child: ListView.separated(
-                        itemCount: _length(food),
-                        separatorBuilder: (_, __) => const Divider(),
-                        itemBuilder: (context, index) {
-                          return CartItemList(
-                            foodsList: food[index],
-                            price: state.price,
-                          );
-                        },
+          if (state is CartLoaded) {
+            final food = state.foods;
+            log(state.foods.length.toString());
+            return food.isNotEmpty
+                ? Column(
+                    children: <Widget>[
+                      CartPrice(price: state.price),
+                      const Divider(),
+                      Expanded(
+                        child: ListView.separated(
+                          itemCount: _length(food),
+                          separatorBuilder: (_, __) => const Divider(),
+                          itemBuilder: (context, index) {
+                            return CartItemList(
+                              foods: food[index],
+                              price: state.price,
+                              foodsList: food,
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                  ],
-                )
+                    ],
+                  )
                 : Center(
-                  child: Image.asset('lib/common/assets/images/korzina.png'),
-                );
-                }
-                return Center(
-                  child: Image.asset('lib/common/assets/images/korzina.png'),
-                );
+                    child: Image.asset('lib/common/assets/images/korzina.png'),
+                  );
+          }
+          return Center(
+            child: Image.asset('lib/common/assets/images/korzina.png'),
+          );
         },
       ),
     );

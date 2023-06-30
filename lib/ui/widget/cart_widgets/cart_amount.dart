@@ -4,29 +4,19 @@ import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/feature/presentation/bloc/cart_bloc/cart_bloc.dart';
 
 class CartAmount extends StatefulWidget {
-  final  FoodEntity foodsList;
+  final List<FoodEntity> foodsList;
+  final FoodEntity food;
   final double price;
-  const CartAmount(
-      {super.key,
-      required this.foodsList,
-      required this.price});
+  const CartAmount({super.key, required this.food, required this.price, required this.foodsList});
 
   @override
-  // ignore: no_logic_in_create_state
-  State<CartAmount> createState() => _CartAmountState(
-      foodsList: foodsList, price: price,  );
+  State<CartAmount> createState() => _CartAmountState();
 }
 
 class _CartAmountState extends State<CartAmount> {
-  final FoodEntity foodsList;
-  final double price;
-
   int number = 1;
 
-  _CartAmountState(
-      {required this.foodsList, required this.price});
-
-
+  _CartAmountState();
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +38,7 @@ class _CartAmountState extends State<CartAmount> {
               setState(() {
                 number--;
               });
-              if(number != 0){
-              _deleteOneItemFromCart(context);
-              }
+
               if (number == 0) {
                 showDialog(
                   context: context,
@@ -74,6 +62,7 @@ class _CartAmountState extends State<CartAmount> {
                       TextButton(
                         child: const Text('Нет'),
                         onPressed: () {
+                          _deleteOneItemFromCart(context);
                           setState(() {
                             number++;
                           });
@@ -84,7 +73,10 @@ class _CartAmountState extends State<CartAmount> {
                     ],
                   ),
                 );
+              }
 
+              if (number != 0) {
+                _deleteOneItemFromCart(context);
               }
             },
             icon: const Icon(Icons.remove_circle_outline),
@@ -93,8 +85,7 @@ class _CartAmountState extends State<CartAmount> {
           Container(
               height: 50,
               width: 50,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.white)),
+              decoration: BoxDecoration(border: Border.all(width: 1, color: Colors.white)),
               child: Center(
                   child: Text(
                 'x$number',
@@ -116,20 +107,16 @@ class _CartAmountState extends State<CartAmount> {
       ),
     );
   }
-    void _deleteFromCart(BuildContext context) {
-    context
-        .read<CartBlock>()
-        .add(DeleteFromCartEvent(food: foodsList));
-  }
-  void _deleteOneItemFromCart(BuildContext context) {
-    context
-        .read<CartBlock>()
-        .add(DeleteOneItemFromCartEvent(food: foodsList));
-  }
-   void _addOnCart(BuildContext context) {
-    context
-        .read<CartBlock>()
-        .add(AddOnCartEvent(food: foodsList));
+
+  void _deleteFromCart(BuildContext context) {
+    context.read<CartBlock>().add(DeleteFromCartEvent(food: widget.food));
   }
 
+  void _deleteOneItemFromCart(BuildContext context) {
+    context.read<CartBlock>().add(DeleteOneItemFromCartEvent(food: widget.food));
+  }
+
+  void _addOnCart(BuildContext context) {
+    context.read<CartBlock>().add(AddOnCartEvent(food: widget.food));
+  }
 }

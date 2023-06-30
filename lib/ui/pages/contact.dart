@@ -22,7 +22,7 @@ class Contact extends StatelessWidget {
 }
 
 Widget _buildbody() {
-  return Card(
+  return  Card(
     color: const Color.fromARGB(255, 41, 39, 39),
     margin: const EdgeInsets.all(16),
     child: Column(

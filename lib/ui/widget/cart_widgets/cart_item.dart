@@ -4,10 +4,11 @@ import 'package:shop_on_block/ui/pages/food_main_screen/food_main_screen.dart';
 import 'package:shop_on_block/ui/widget/cart_widgets/cart_amount.dart';
 
 class CartItem extends StatelessWidget {
-  final FoodEntity foodsList;
-final double price;
-  const CartItem({super.key, required this.foodsList, required this.price});
-  
+  final List<FoodEntity> foodsList;
+  final FoodEntity food;
+  final double price;
+  const CartItem({super.key, required this.food, required this.price, required this.foodsList});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,8 +30,7 @@ final double price;
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => FoodMainScreen(
-                         foodsList: foodsList),
+                    builder: (context) => FoodMainScreen(foodsList: food),
                   ),
                 );
               },
@@ -41,14 +41,14 @@ final double price;
                   image: DecorationImage(
                     scale: 5,
                     image: AssetImage(
-                      foodsList.imgUrl,
+                      food.imgUrl,
                     ),
                   ),
                 ),
               ),
             ),
             title: Text(
-              foodsList.title,
+              food.title,
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 22,
@@ -58,13 +58,13 @@ final double price;
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  '${foodsList.price} р',
+                  '${food.price} р',
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 22,
                   ),
                 ),
-                CartAmount(foodsList: foodsList, price: price),
+                CartAmount(food: food, price: price, foodsList: foodsList,),
               ],
             ),
           ),

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:shop_on_block/common/mocks/mocks.dart';
@@ -27,7 +26,7 @@ class FoodRepositoryImpl implements FoodRepository {
   Future<Either<Failure, List<FoodEntity>>> searchFood(String title) async {
     try {
       final allFoods = await searchFood(title);
-      log('$allFoods');
+  
 
       return Right(allFoods as List<FoodEntity>);
     } on Exception catch (e) {
@@ -37,7 +36,7 @@ class FoodRepositoryImpl implements FoodRepository {
 
   @override
   Future<void> addFoodToCart(List<FoodEntity> foods) async {
-     log('2222222');
+
     foods;
 
     await localDataSource.setNewsToCache(foods);

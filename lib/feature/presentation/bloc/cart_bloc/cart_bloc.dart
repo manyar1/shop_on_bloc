@@ -34,14 +34,11 @@ class CartBlock extends Bloc<CartEvent, CartState> {
       add(GetAllFoodCartEvent(completer: completer));
       await completer.future;
     }
-     log('122');
     prevState = state;
-    log(prevState.toString());
     if (prevState is! CartLoaded) {
       log('illegal ${state.runtimeType} for ${event.runtimeType}');
       return;
     }
-
     final addFoods = prevState.foods.toList()..add(event.food);
     await cartFood(PageCartParams(foods: addFoods));
     emit(CartLoaded(foods: addFoods));
@@ -66,7 +63,7 @@ class CartBlock extends Bloc<CartEvent, CartState> {
   }
 
   Future<void> _deleteOneItemFromCart(DeleteOneItemFromCartEvent event, Emitter emit) async {
-   var prevState = state;
+    var prevState = state;
     if (prevState is! CartLoaded) {
       final completer = Completer();
       add(GetAllFoodCartEvent(completer: completer));
@@ -79,8 +76,12 @@ class CartBlock extends Bloc<CartEvent, CartState> {
       return;
     }
     final addFoods = prevState.foods.toList();
-    final removeIndex = addFoods.indexWhere((food) => food.id == event.food.id);
+    final removeIndex = addFoods.lastIndexWhere((food) => food.id == event.food.id);
+    log(addFoods.toString());
+
     final updatedAddFoods = addFoods.toList()..removeAt(removeIndex);
+    log(updatedAddFoods.toString());
+    await cartFood(PageCartParams(foods: updatedAddFoods));
     emit(CartLoaded(foods: updatedAddFoods));
   }
 
@@ -90,10 +91,8 @@ class CartBlock extends Bloc<CartEvent, CartState> {
       if (prevState is! CartLoaded) {
         emit(const CartLoading());
       }
-     
-      final response =  await getAllFoodCart(const PageCartFoodParams());
-      await response.fold(
-          (failure) => _onStateFailure(emit, failure), (food) => _onGetAllFoodSuccessful(emit, food));
+      final response = await getAllFoodCart(const PageCartFoodParams());
+      await response.fold((failure) => _onStateFailure(emit, failure), (food) => _onGetAllFoodSuccessful(emit, food));
     } finally {
       event.completer?.complete();
     }

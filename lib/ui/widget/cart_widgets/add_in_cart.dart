@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +10,7 @@ class AddInCart extends StatelessWidget {
   final FoodEntity food;
   const AddInCart({super.key, required this.number, required this.food});
   void _addOnCart(BuildContext context) {
-    log(food.toString());
+
     context.read<CartBlock>().add(AddOnCartEvent(food: food));
   }
 
