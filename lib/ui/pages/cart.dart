@@ -9,6 +9,7 @@ import 'package:shop_on_block/ui/widget/cart_widgets/cart_price.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
+
   void _getAllFoodCart(BuildContext context) {
     context.read<CartBlock>().add(const GetAllFoodCartEvent());
   }
@@ -16,6 +17,7 @@ class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _getAllFoodCart(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -28,13 +30,13 @@ class Cart extends StatelessWidget {
       ),
       body: BlocBuilder<CartBlock, CartState>(
         buildWhen: (previous, current) {
-          
           return true;
         },
         builder: (context, state) {
           if (state is CartLoaded) {
             final food = state.foods;
-            log(state.foods.length.toString());
+            final seen = <String>{};
+            final List<FoodEntity> foods = food.where((element) => seen.add(element.title)).toList();
             return food.isNotEmpty
                 ? Column(
                     children: <Widget>[
@@ -42,13 +44,13 @@ class Cart extends StatelessWidget {
                       const Divider(),
                       Expanded(
                         child: ListView.separated(
-                          itemCount: _length(food),
+                          itemCount: _length(foods),
                           separatorBuilder: (_, __) => const Divider(),
                           itemBuilder: (context, index) {
                             return CartItemList(
-                              foods: food[index],
-                              price: state.price,
-                              foodsList: food,
+                              foods: foods[index],
+                              price: foods[index].price,
+                              foodsList: foods,
                             );
                           },
                         ),

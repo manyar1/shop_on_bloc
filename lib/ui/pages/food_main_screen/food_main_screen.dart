@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
+import 'package:shop_on_block/ui/widget/cart_widgets/add_in_cart_main.dart';
 import 'package:shop_on_block/ui/widget/secondary_screens_widgets/price_and_gram.dart';
 
 class FoodMainScreen extends StatelessWidget {
   final FoodEntity foodsList;
-  const FoodMainScreen(
-      {super.key, required this.foodsList});
+  const FoodMainScreen({super.key, required this.foodsList});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,7 @@ class FoodMainScreen extends StatelessWidget {
                 height: 300,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(foodsList.imgUrl),
-                      fit: BoxFit.contain),
+                  image: DecorationImage(image: AssetImage(foodsList.imgUrl), fit: BoxFit.contain),
                 ),
               ),
             ),
@@ -46,8 +44,7 @@ class FoodMainScreen extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       foodsList.title,
-                      style: const TextStyle(
-                          fontSize: 12, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                     const Divider(),
                     Text(
@@ -65,6 +62,14 @@ class FoodMainScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: AddInCartMain(
+                food: foodsList,
+                number: i,
+              ),
+            )
           ],
         ));
   }

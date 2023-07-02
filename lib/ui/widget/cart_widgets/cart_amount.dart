@@ -35,11 +35,7 @@ class _CartAmountState extends State<CartAmount> {
         children: <Widget>[
           IconButton(
             onPressed: () {
-              setState(() {
-                number--;
-              });
-
-              if (number == 0) {
+              if (number == 1) {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
@@ -62,11 +58,6 @@ class _CartAmountState extends State<CartAmount> {
                       TextButton(
                         child: const Text('Нет'),
                         onPressed: () {
-                          _deleteOneItemFromCart(context);
-                          setState(() {
-                            number++;
-                          });
-                          _addOnCart(context);
                           Navigator.pop(context);
                         },
                       ),
@@ -74,9 +65,13 @@ class _CartAmountState extends State<CartAmount> {
                   ),
                 );
               }
-
-              if (number != 0) {
+              if (number != 1) {
                 _deleteOneItemFromCart(context);
+              }
+              if (number != 1) {
+                setState(() {
+                  number--;
+                });
               }
             },
             icon: const Icon(Icons.remove_circle_outline),

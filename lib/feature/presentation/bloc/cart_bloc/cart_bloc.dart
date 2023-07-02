@@ -41,6 +41,7 @@ class CartBlock extends Bloc<CartEvent, CartState> {
     }
     final addFoods = prevState.foods.toList()..add(event.food);
     await cartFood(PageCartParams(foods: addFoods));
+
     emit(CartLoaded(foods: addFoods));
   }
 
