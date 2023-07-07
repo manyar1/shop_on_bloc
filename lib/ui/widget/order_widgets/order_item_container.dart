@@ -5,11 +5,19 @@ import 'package:shop_on_block/ui/pages/food_main_screen/food_main_screen.dart';
 class OrederItemContainer extends StatelessWidget {
   final List<FoodEntity> cartData;
   final int index;
+  final List<FoodEntity> allCartData;
 
-  const OrederItemContainer({Key? key, required this.cartData, required this.index}) : super(key: key);
+  const OrederItemContainer({Key? key, required this.cartData, required this.index, required this.allCartData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    int number = 0;
+    for (final element in allCartData) {
+      if (cartData[index].title == element.title) {
+        number++;
+      }
+    }
     return ListTile(
       leading: InkWell(
         onTap: () {
@@ -38,6 +46,17 @@ class OrederItemContainer extends StatelessWidget {
         style: const TextStyle(
           color: Colors.white,
         ),
+      ),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            'x$number',
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }

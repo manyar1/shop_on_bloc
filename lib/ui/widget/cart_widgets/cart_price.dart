@@ -4,8 +4,10 @@ import 'package:shop_on_block/ui/pages/order_page.dart';
 
 class CartPrice extends StatelessWidget {
   final double price;
+
   final List<FoodEntity> cartFood;
-  const CartPrice({super.key, required this.price, required this.cartFood});
+  final List<FoodEntity> allCartFood;
+  const CartPrice({super.key, required this.price, required this.cartFood, required this.allCartFood, });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class CartPrice extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => OrderPage(cartData: cartFood, price: price,),
+                builder: (context) => OrderPage(cartData: cartFood, price: price, allCartData: allCartFood,),
               ),
             );
           },

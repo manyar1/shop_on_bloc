@@ -5,9 +5,10 @@ import 'package:shop_on_block/ui/widget/order_widgets/order_item_container.dart'
 
 class OrderPage extends StatelessWidget {
   final List<FoodEntity> cartData;
+  final List<FoodEntity> allCartData;
   final double price;
 
-  const OrderPage({Key? key, required this.cartData, required this.price}) : super(key: key);
+  const OrderPage({Key? key, required this.cartData, required this.price, required this.allCartData,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +115,8 @@ class OrderPage extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   itemCount: cartData.length,
                   itemBuilder: (context, index) {
-                    return OrederItemContainer(cartData: cartData, index: index);
+                    
+                    return OrederItemContainer(cartData: cartData, index: index, allCartData: allCartData,);
                   },
                 )),
           ],

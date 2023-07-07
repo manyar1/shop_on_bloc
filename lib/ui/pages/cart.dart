@@ -43,7 +43,7 @@ class Cart extends StatelessWidget {
                     children: <Widget>[
                       CartPrice(
                         price: state.price,
-                        cartFood: foods,
+                        cartFood: foods, allCartFood: foodsList,
                       ),
                       const Divider(),
                       Expanded(
