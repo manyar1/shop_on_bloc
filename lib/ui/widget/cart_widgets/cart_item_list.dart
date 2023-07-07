@@ -6,17 +6,19 @@ import 'package:shop_on_block/ui/widget/cart_widgets/cart_item.dart';
 
 class CartItemList extends StatelessWidget {
   final List<FoodEntity> foodsList;
-  final FoodEntity foods;
+  final List<FoodEntity> allFoodsList;
+  final FoodEntity food;
+  final int number;
   final double price;
-  const CartItemList({super.key, required this.foods, required this.price, required this.foodsList});
+  const CartItemList({super.key, required this.food, required this.price, required this.foodsList, required this.allFoodsList, required this.number});
   void _deleteFromCart(BuildContext context) {
-    context.read<CartBlock>().add(DeleteFromCartEvent(food: foods));
+    context.read<CartBlock>().add(DeleteFromCartEvent(food: food));
   }
 
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-        key: ValueKey(foods),
+        key: ValueKey(food),
         background: Container(
           alignment: Alignment.centerRight,
           margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
@@ -30,8 +32,8 @@ class CartItemList extends StatelessWidget {
         direction: DismissDirection.endToStart,
         onDismissed: (direction) => _deleteFromCart(context),
         child: CartItem(
-          food: foods,
-          price: price, foodsList: foodsList,
+          food: food,
+          price: price, foodsList: allFoodsList, number: number,
         ));
   }
 }

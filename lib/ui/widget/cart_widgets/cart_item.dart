@@ -6,8 +6,9 @@ import 'package:shop_on_block/ui/widget/cart_widgets/cart_amount.dart';
 class CartItem extends StatelessWidget {
   final List<FoodEntity> foodsList;
   final FoodEntity food;
+  final int number;
   final double price;
-  const CartItem({super.key, required this.food, required this.price, required this.foodsList});
+  const CartItem({super.key, required this.food, required this.price, required this.foodsList, required this.number});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,7 @@ class CartItem extends StatelessWidget {
                     fontSize: 22,
                   ),
                 ),
-                CartAmount(food: food, price: price, foodsList: foodsList,),
+                CartAmount(food: food, price: price, foodsList: foodsList, number: number,),
               ],
             ),
           ),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
@@ -32,10 +34,11 @@ class Cart extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is CartLoaded) {
-            final food = state.foods;
+            final foodsList = state.foods;
+            log(foodsList.toString());
             final seen = <String>{};
-            final List<FoodEntity> foods = food.where((element) => seen.add(element.title)).toList();
-            return food.isNotEmpty
+            final List<FoodEntity> foods = foodsList.where((element) => seen.add(element.title)).toList();
+            return foodsList.isNotEmpty
                 ? Column(
                     children: <Widget>[
                       CartPrice(
@@ -48,10 +51,18 @@ class Cart extends StatelessWidget {
                           itemCount: _length(foods),
                           separatorBuilder: (_, __) => const Divider(),
                           itemBuilder: (context, index) {
+                            int number = 0;
+                            for (final element in foodsList) {
+                              if (foods[index].title == element.title) {
+                                number++;
+                              }
+                            }
                             return CartItemList(
-                              foods: foods[index],
+                              food: foods[index],
                               price: foods[index].price,
                               foodsList: foods,
+                              allFoodsList: foodsList,
+                              number: number,
                             );
                           },
                         ),

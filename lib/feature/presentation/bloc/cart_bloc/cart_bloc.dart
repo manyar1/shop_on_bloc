@@ -59,6 +59,7 @@ class CartBlock extends Bloc<CartEvent, CartState> {
       return;
     }
     final addFoods = prevState.foods.toList()..removeWhere((food) => food.id == event.food.id);
+   
     await removefood(RemoveCartParams(foods: addFoods));
     emit(CartLoaded(foods: addFoods));
   }
@@ -78,7 +79,7 @@ class CartBlock extends Bloc<CartEvent, CartState> {
     }
     final addFoods = prevState.foods.toList();
     final removeIndex = addFoods.lastIndexWhere((food) => food.id == event.food.id);
-    log(addFoods.toString());
+  
 
     final updatedAddFoods = addFoods.toList()..removeAt(removeIndex);
     log(updatedAddFoods.toString());

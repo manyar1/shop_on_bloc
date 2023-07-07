@@ -7,7 +7,8 @@ class CartAmount extends StatefulWidget {
   final List<FoodEntity> foodsList;
   final FoodEntity food;
   final double price;
-  const CartAmount({super.key, required this.food, required this.price, required this.foodsList});
+  final int number;
+  const CartAmount({super.key, required this.food, required this.price, required this.foodsList, required this.number});
 
   @override
   State<CartAmount> createState() => _CartAmountState();
@@ -35,7 +36,7 @@ class _CartAmountState extends State<CartAmount> {
         children: <Widget>[
           IconButton(
             onPressed: () {
-              if (number == 1) {
+              if (widget.number == 1) {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
@@ -65,14 +66,10 @@ class _CartAmountState extends State<CartAmount> {
                   ),
                 );
               }
-              if (number != 1) {
+              if (widget.number != 1) {
                 _deleteOneItemFromCart(context);
               }
-              if (number != 1) {
-                setState(() {
-                  number--;
-                });
-              }
+           
             },
             icon: const Icon(Icons.remove_circle_outline),
             color: Colors.white,
@@ -83,16 +80,14 @@ class _CartAmountState extends State<CartAmount> {
               decoration: BoxDecoration(border: Border.all(width: 1, color: Colors.white)),
               child: Center(
                   child: Text(
-                'x$number',
+                'x${widget.number}',
                 style: const TextStyle(
                   color: Colors.white,
                 ),
               ))),
           IconButton(
             onPressed: () {
-              setState(() {
-                number++;
-              });
+             
               _addOnCart(context);
             },
             icon: const Icon(Icons.add_circle_outline),
