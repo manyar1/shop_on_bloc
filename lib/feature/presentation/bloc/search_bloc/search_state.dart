@@ -15,15 +15,14 @@ class FoodSearchLoading extends SearchFoodState {}
 //персонажи загрузились
 class FoodSearchLoaded extends SearchFoodState {
   final List<FoodEntity> foods;
-  final String search;
-  const FoodSearchLoaded({required this.search, required this.foods});
+
+  const FoodSearchLoaded({ required this.foods});
   FoodSearchLoaded copyWith({List<FoodEntity>? foundFoods, String? search}) {
-    return FoodSearchLoaded(
-        search: search ?? this.search, foods: foundFoods ?? foods);
+    return FoodSearchLoaded( foods: foundFoods ?? foods);
   }
 
   @override
-  List<Object?> get props => [foods, search];
+  List<Object?> get props => [foods];
 }
 
 //при загрузке произошла ошибка

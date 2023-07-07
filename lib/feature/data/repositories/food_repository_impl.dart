@@ -25,10 +25,26 @@ class FoodRepositoryImpl implements FoodRepository {
   @override
   Future<Either<Failure, List<FoodEntity>>> searchFood(String title) async {
     try {
-      final allFoods = await searchFood(title);
-  
+      final allFoods = Mocks.listFoodEntity;
+      final foundFoods = allFoods.where((food) {
+        final nameSplits = food.title.toLowerCase().split(' ');
+        final searchSplits = title.toLowerCase().split(' ')..removeWhere((searchSplit) => searchSplit.isEmpty);
+        final checks = <bool>[];
+        for (final nameSplit in nameSplits) {
+          bool passed = false;
+          for (final searchSplit in searchSplits) {
+            if (nameSplit.contains(searchSplit)) {
+              passed = true;
+            }
+          }
+          checks.add(passed);
+        }
+        List<bool> isFounds = [];
+        isFounds = checks.where((check) => check).toList();
+        return isFounds.length >= searchSplits.length;
+      }).toList();
 
-      return Right(allFoods as List<FoodEntity>);
+      return Right(foundFoods);
     } on Exception catch (e) {
       return Left(NetworkFailure(e.toString()));
     }
@@ -36,7 +52,6 @@ class FoodRepositoryImpl implements FoodRepository {
 
   @override
   Future<void> addFoodToCart(List<FoodEntity> foods) async {
-
     foods;
 
     await localDataSource.setNewsToCache(foods);
@@ -45,7 +60,7 @@ class FoodRepositoryImpl implements FoodRepository {
   @override
   Future<void> removeFromCart(List<FoodEntity> foods) async {
     foods;
-   
+
     await localDataSource.setNewsToCache(foods);
   }
 

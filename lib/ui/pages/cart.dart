@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
@@ -40,7 +38,10 @@ class Cart extends StatelessWidget {
             return food.isNotEmpty
                 ? Column(
                     children: <Widget>[
-                      CartPrice(price: state.price),
+                      CartPrice(
+                        price: state.price,
+                        cartFood: foods,
+                      ),
                       const Divider(),
                       Expanded(
                         child: ListView.separated(

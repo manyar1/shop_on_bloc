@@ -19,31 +19,10 @@ class SearchFoodBloc extends Bloc<SearchFoodEvent, SearchFoodState> {
   }
 
   Future<void> _onSearchFood(FoodSearch event, Emitter emit) async {
-    final prevState = state;
-    if (prevState is! FoodSearchLoaded) {
-      log('illegal ${state.runtimeType} for ${event.runtimeType}');
-      return;
-    }
-    final foundFoods = prevState.foods.where((food) {
-      final nameSplits = food.title.toLowerCase().split(' ');
-      final searchSplits = event.foodTitle.toLowerCase().split(' ')
-        ..removeWhere((searchSplit) => searchSplit.isEmpty);
-      final checks = <bool>[];
-      for (final nameSplit in nameSplits) {
-        bool passed = false;
-        for (final searchSplit in searchSplits) {
-          if (nameSplit.contains(searchSplit)) {
-            passed = true;
-          }
-        }
-        checks.add(passed);
-      }
-      List<bool> isFounds = [];
-      isFounds = checks.where((check) => check).toList();
-      return isFounds.length >= searchSplits.length;
-    }).toList();
-    emit(prevState.copyWith(foundFoods: foundFoods, search: event.foodTitle));
-
-    log('FoodTitle: ${event.foodTitle}');
+    emit(FoodSearchLoading());
+    final failureOrFood = await searchFood(SearchFoodParams(title: event.foodTitle));
+    log(failureOrFood.toString());
+    failureOrFood.fold(
+        (failure) => emit(const FoodSearchError(message: 'Ошибка')), (food) => emit(FoodSearchLoaded(foods: food)));
   }
 }

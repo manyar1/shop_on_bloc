@@ -58,7 +58,7 @@ class AddInCartMain extends StatelessWidget {
                   10,
                 ),
               ),
-              child: MaterialButton(
+              child: MaterialButton(    
                 child: const Text(
                   'Добавить',
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),

@@ -25,18 +25,16 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-        tooltip: 'Back',
-        onPressed: () => close(context, null),
-        icon: const Icon(Icons.arrow_back_outlined));
+        tooltip: 'Back', onPressed: () => close(context, null), icon: const Icon(Icons.arrow_back_outlined));
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    BlocProvider.of<SearchFoodBloc>(context, listen: false)
-        .add(FoodSearch(query));
+    BlocProvider.of<SearchFoodBloc>(context, listen: false).add(FoodSearch(query));
     log('Inside custom search delegate and search query is $query');
-    return BlocBuilder<SearchFoodBloc, SearchFoodState>(
-        builder: (context, state) {
+    return BlocBuilder<SearchFoodBloc, SearchFoodState>(builder: (context, state) {
+      log('Inside custom $state');
+
       if (state is FoodSearchLoading) {
         return _loadingindicator();
       } else if (state is FoodSearchLoaded) {
@@ -55,7 +53,7 @@ class CustomSearchDelegate extends SearchDelegate {
         return _showErrorText(state.message);
       } else {
         return const Center(
-          child: Icon(Icons.now_wallpaper),
+          child: Icon(Icons.access_alarm),
         );
       }
     });

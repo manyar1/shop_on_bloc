@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
+import 'package:shop_on_block/ui/pages/order_page.dart';
 
 class CartPrice extends StatelessWidget {
   final double price;
-  const CartPrice({super.key, required this.price});
+  final List<FoodEntity> cartFood;
+  const CartPrice({super.key, required this.price, required this.cartFood});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,13 @@ class CartPrice extends StatelessWidget {
           ),
         ),
         MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => OrderPage(cartData: cartFood, price: price,),
+              ),
+            );
+          },
           child: const Text(
             'Купить',
             style: TextStyle(
