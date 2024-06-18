@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   equatable: ^2.0.5
   dartz: ^0.10.1
+  flutter_rating_stars: ^1.0.3+4
   flutter_bloc: ^8.1.2
   bloc_concurrency: ^0.2.1
   get_it: ^7.2.0

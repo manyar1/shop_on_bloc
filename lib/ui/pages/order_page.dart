@@ -28,8 +28,8 @@ class OrderPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             const Divider(),
-            Column(
-              children: const [
+            const Column(
+              children: [
                 ListTile(
                   title: TextField(
                     style: TextStyle(color: Colors.white),

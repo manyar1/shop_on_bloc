@@ -1,9 +1,7 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:shop_on_block/common/mocks/mocks.dart';
 import 'package:shop_on_block/core/error/failure.dart';
 import 'package:shop_on_block/feature/data/datasuorces/foods_local_data_source.dart';
-
 import 'package:shop_on_block/feature/domain/entities/food_entity.dart';
 import 'package:shop_on_block/feature/domain/repositories/food_repository.dart';
 
@@ -54,20 +52,20 @@ class FoodRepositoryImpl implements FoodRepository {
   Future<void> addFoodToCart(List<FoodEntity> foods) async {
     foods;
 
-    await localDataSource.setNewsToCache(foods);
+    await localDataSource.setFoodToCache(foods);
   }
 
   @override
   Future<void> removeFromCart(List<FoodEntity> foods) async {
     foods;
 
-    await localDataSource.setNewsToCache(foods);
+    await localDataSource.setFoodToCache(foods);
   }
 
   @override
   Future<Either<Failure, List<FoodEntity>>> getAllFoodCart() async {
     try {
-      final cachedFoods = await localDataSource.getCachedNews();
+      final cachedFoods = await localDataSource.getCachedFoods();
 
       return Right(cachedFoods);
     } on Exception catch (e) {

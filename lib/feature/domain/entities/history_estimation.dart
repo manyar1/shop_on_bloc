@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class FoodEntity extends Equatable {
+class HistoryEstimationEntity extends Equatable {
   final int idPerson;
   final int idFood;
   final String rating;
 
-  const FoodEntity({
+  const HistoryEstimationEntity({
     required this.idPerson,
     required this.idFood,
     required this.rating,
@@ -13,8 +13,8 @@ class FoodEntity extends Equatable {
 
   @override
   List<Object?> get props => [idPerson, idFood, rating];
-  factory FoodEntity.fromJson(Map<String, dynamic> json) {
-    return FoodEntity(
+  factory HistoryEstimationEntity.fromJson(Map<String, dynamic> json) {
+    return HistoryEstimationEntity(
       idPerson: json['idPerson'],
       idFood: json['idFood'],
       rating: json['rating'],

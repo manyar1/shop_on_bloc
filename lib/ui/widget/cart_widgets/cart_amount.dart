@@ -41,9 +41,9 @@ class _CartAmountState extends State<CartAmount> {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text('Предупреждение'),
-                    content: SingleChildScrollView(
+                    content: const SingleChildScrollView(
                       child: ListBody(
-                        children: const <Widget>[
+                        children: <Widget>[
                           Text('Вы точно хотите удалить?'),
                         ],
                       ),
@@ -54,6 +54,44 @@ class _CartAmountState extends State<CartAmount> {
                         onPressed: () {
                           _deleteFromCart(context);
                           Navigator.pop(context);
+                        showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Вы заказывали картошку фри'),
+                    content:  SingleChildScrollView(
+                      child: ListBody(
+                        children: <Widget>[
+                          const Text('Не хотите ли заказать?'),
+                          SizedBox(height: 10),
+                           const Center(child: Text('Картофельные дольки')),
+                          Container(             height: 100,
+              width: 100,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('lib/common/assets/images/kartoshkaderev.png'),
+                    fit: BoxFit.contain),
+              ),)
+                        ],
+                      
+                      ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('Да'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('Нет'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                );
                         },
                       ),
                       TextButton(

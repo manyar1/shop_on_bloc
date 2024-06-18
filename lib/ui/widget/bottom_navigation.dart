@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_on_block/ui/pages/cart.dart';
 import 'package:shop_on_block/ui/pages/contact.dart';
 import 'package:shop_on_block/ui/pages/home_page.dart';
+import 'package:shop_on_block/ui/pages/recomendation.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -39,13 +40,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
               ),
               label: 'Контакты',
             ),
-            // BottomNavigationBarItem(
-            //   icon: Icon(
-            //     Icons.account_box,
-            //     color: Colors.white,
-            //   ),
-            //   label: ('Профиль'),
-            // ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_box,
+                color: Colors.white,
+              ),
+              label: ('Профиль'),
+            ),
           ],
         ),
         tabBuilder: (context, index) {
@@ -73,12 +74,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
               });
               break;
             case 3:
-            // returnValue = CupertinoTabView(builder: (context) {
-            //   return const CupertinoPageScaffold(
-            //     child: Profile(),
-            //   );
-            // });
-            // break;
+            returnValue = CupertinoTabView(builder: (context) {
+              return const CupertinoPageScaffold(
+                child: Recomend(),
+              );
+            });
+            break;
           }
           return returnValue;
         });
